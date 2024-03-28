@@ -23,6 +23,7 @@ body {
   color: white;
   margin: auto;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 #root{
   height: 100%;

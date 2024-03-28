@@ -1,6 +1,6 @@
 import { Await, Form, useLoaderData } from "react-router-dom";
 import Button from "../components/UI/Button";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { GrStatusGood } from "react-icons/gr";
 import { GrStatusCritical } from "react-icons/gr";
 import gsap from "gsap";
@@ -14,7 +14,7 @@ const LearnPage = () => {
 
     const [currentWord, setCurrentWord] = useState(false);
     const [isStarting, setIsStarting] = useState(false);
-    const [answerStatus, setAnswerStatus] = useState('');
+    const [answerStatus, setAnswerStatus] = useState(null);
 
     useEffect(() => {
         if (answerStatus) {
@@ -23,7 +23,7 @@ const LearnPage = () => {
 
     }, [answerStatus])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         // Перевірка, чи існує numberInput, щоб уникнути помилок
         if (numberInput.current) {
             numberInput.current.focus(); // Встановлення фокусу на елементі
@@ -34,7 +34,7 @@ const LearnPage = () => {
     }, []);
 
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (currentWord) {
             const timeline = gsap.timeline();
             timeline.fromTo('#startingForm', { x: '0', opacity: 1 }, { x: '50vh', opacity: 0 })
@@ -142,7 +142,7 @@ const LearnPage = () => {
 
     return (
         <Await resolve={words}>
-            <section className="flex flex-col w-full justify-center items-center h-auto gap-12" id='learnSection'>
+            <section className="flex flex-col w-full justify-center items-center h-auto gap-12 overflow-hidden" id='learnSection'>
 
                 {currentWord &&
                     <div className="flex items-center justify-center flex-col" id='currentWordBlock'>
