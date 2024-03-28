@@ -97,7 +97,7 @@ const LearnPage = () => {
 
 
                 const text = (
-                    <Form className="flex flex-col gap-4 text-center max-sm:w-[90%]" id='startingForm'>
+                    <Form className="flex flex-col gap-4 text-center max-sm:w-[90vw]" id='startingForm'>
                         <p>{testingArr[currentIndex].eng}</p>
                         <input ref={answerRef} placeholder="translate" className="text-black"></input>
                         <Button onClick={nextIndex} type='submit'>Next</Button>
